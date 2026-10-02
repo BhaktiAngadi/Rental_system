@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room Details"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/tvRoomType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Single Room"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📍 Panjim, Goa"
+            android:textSize="17sp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/tvRent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="₹8000 / month"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/tvRoomId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Room ID: R001"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/tvAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Room Features"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✓ Furnished&#10;✓ Wi-Fi&#10;✓ Attached Bathroom"
+            android:textSize="16sp"
+            android:layout_marginBottom="35dp"/>
+
+        <Button
+            android:id="@+id/btnRequestRent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REQUEST TO RENT"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</ScrollView>
