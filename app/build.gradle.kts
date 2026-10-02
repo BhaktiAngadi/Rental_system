@@ -34,6 +34,7 @@ android {
 dependencies {
 
     implementation(libs.appcompat)
+    implementation("androidx.cardview:cardview:1.0.0")
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)

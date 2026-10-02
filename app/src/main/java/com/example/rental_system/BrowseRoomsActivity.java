@@ -2,6 +2,9 @@ package com.example.rental_system;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -9,175 +12,184 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rental_system.model.Room;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class BrowseRoomsActivity extends AppCompatActivity {
 
     EditText etRoomSearch;
 
     LinearLayout layoutFilter;
 
+    // Complete room cards
+    LinearLayout roomCard1;
+    LinearLayout roomCard2;
+    LinearLayout roomCard3;
+
+    // Details buttons
     Button btnDetails1;
     Button btnDetails2;
     Button btnDetails3;
 
+    // Bottom navigation
     LinearLayout navHome;
     LinearLayout navBrowse;
     LinearLayout navRequests;
     LinearLayout navProfile;
 
-    // List of Room objects
-    List<Room> roomList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_browse_rooms);
 
-        // Search
+
+        // --------------------------------
+        // SEARCH
+        // --------------------------------
+
         etRoomSearch = findViewById(R.id.etRoomSearch);
 
-        // Filter
+
+        // --------------------------------
+        // FILTER
+        // --------------------------------
+
         layoutFilter = findViewById(R.id.layoutFilter);
 
-        // Room buttons
+
+        // --------------------------------
+        // ROOM CARDS
+        // --------------------------------
+
+        roomCard1 = findViewById(R.id.roomCard1);
+        roomCard2 = findViewById(R.id.roomCard2);
+        roomCard3 = findViewById(R.id.roomCard3);
+
+
+        // --------------------------------
+        // DETAILS BUTTONS
+        // --------------------------------
+
         btnDetails1 = findViewById(R.id.btnDetails1);
         btnDetails2 = findViewById(R.id.btnDetails2);
         btnDetails3 = findViewById(R.id.btnDetails3);
 
-        // Bottom navigation
+
+        // --------------------------------
+        // BOTTOM NAVIGATION
+        // --------------------------------
+
         navHome = findViewById(R.id.navHome);
         navBrowse = findViewById(R.id.navBrowse);
         navRequests = findViewById(R.id.navRequests);
         navProfile = findViewById(R.id.navProfile);
 
 
-        // ------------------------------------------------
-        // CREATE ROOM OBJECTS
-        // ------------------------------------------------
-
-        roomList = new ArrayList<>();
-
-        roomList.add(new Room(
-                "R001",
-                "Single Room",
-                "Panjim, Goa",
-                8000,
-                true
-        ));
-
-        roomList.add(new Room(
-                "R002",
-                "Shared Room",
-                "Margao, Goa",
-                5500,
-                true
-        ));
-
-        roomList.add(new Room(
-                "R003",
-                "1 BHK",
-                "Vasco, Goa",
-                12000,
-                true
-        ));
-
-
-
-
-
-        // ------------------------------------------------
+        // =================================
         // ROOM 1
-        // ------------------------------------------------
+        // =================================
 
         btnDetails1.setOnClickListener(v -> {
 
-            Room selectedRoom = roomList.get(0);
-
-            Intent intent = new Intent(
-                    BrowseRoomsActivity.this,
-                    RoomDetailsActivity.class
+            openRoomDetails(
+                    "R001",
+                    "Single Room",
+                    "Panjim, Goa",
+                    8000,
+                    true
             );
 
-            intent.putExtra("roomId", selectedRoom.getRoomId());
-            intent.putExtra("roomType", selectedRoom.getRoomType());
-            intent.putExtra("location", selectedRoom.getLocation());
-            intent.putExtra("rent", selectedRoom.getMonthlyRent());
-            intent.putExtra("available", selectedRoom.isAvailable());
-
-            startActivity(intent);
         });
 
 
-        // ------------------------------------------------
+        // =================================
         // ROOM 2
-        // ------------------------------------------------
+        // =================================
 
         btnDetails2.setOnClickListener(v -> {
 
-            Room selectedRoom = roomList.get(1);
-
-            Intent intent = new Intent(
-                    BrowseRoomsActivity.this,
-                    RoomDetailsActivity.class
+            openRoomDetails(
+                    "R002",
+                    "Shared Room",
+                    "Margao, Goa",
+                    5500,
+                    true
             );
 
-            intent.putExtra("roomId", selectedRoom.getRoomId());
-            intent.putExtra("roomType", selectedRoom.getRoomType());
-            intent.putExtra("location", selectedRoom.getLocation());
-            intent.putExtra("rent", selectedRoom.getMonthlyRent());
-            intent.putExtra("available", selectedRoom.isAvailable());
-
-            startActivity(intent);
         });
 
 
-        // ------------------------------------------------
+        // =================================
         // ROOM 3
-        // ------------------------------------------------
+        // =================================
 
         btnDetails3.setOnClickListener(v -> {
 
-            Room selectedRoom = roomList.get(2);
-
-            Intent intent = new Intent(
-                    BrowseRoomsActivity.this,
-                    RoomDetailsActivity.class
+            openRoomDetails(
+                    "R003",
+                    "1 BHK",
+                    "Vasco, Goa",
+                    12000,
+                    true
             );
 
-            intent.putExtra("roomId", selectedRoom.getRoomId());
-            intent.putExtra("roomType", selectedRoom.getRoomType());
-            intent.putExtra("location", selectedRoom.getLocation());
-            intent.putExtra("rent", selectedRoom.getMonthlyRent());
-            intent.putExtra("available", selectedRoom.isAvailable());
-
-            startActivity(intent);
         });
 
 
-        // ------------------------------------------------
+        // =================================
+        // SEARCH
+        // =================================
+
+        etRoomSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(
+                    CharSequence s,
+                    int start,
+                    int count,
+                    int after) {
+
+            }
+
+
+            @Override
+            public void onTextChanged(
+                    CharSequence s,
+                    int start,
+                    int before,
+                    int count) {
+
+                searchRooms(s.toString());
+
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+
+
+        // =================================
         // FILTER
-        // ------------------------------------------------
+        // =================================
 
         layoutFilter.setOnClickListener(v -> {
 
             Toast.makeText(
                     BrowseRoomsActivity.this,
-                    "Filter options will be added in Step 5",
+                    "Filter options will be added next",
                     Toast.LENGTH_SHORT
             ).show();
 
         });
 
 
-        // ------------------------------------------------
-        // BOTTOM NAVIGATION
-        // ------------------------------------------------
+        // =================================
+        // HOME
+        // =================================
 
-        // Home
         navHome.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -186,12 +198,16 @@ public class BrowseRoomsActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
+
             finish();
 
         });
 
 
-        // Browse
+        // =================================
+        // BROWSE
+        // =================================
+
         navBrowse.setOnClickListener(v -> {
 
             Toast.makeText(
@@ -203,19 +219,26 @@ public class BrowseRoomsActivity extends AppCompatActivity {
         });
 
 
-        // Requests
+        // =================================
+        // REQUESTS
+        // =================================
+
         navRequests.setOnClickListener(v -> {
 
-            Toast.makeText(
+            Intent intent = new Intent(
                     BrowseRoomsActivity.this,
-                    "My Requests will be added later",
-                    Toast.LENGTH_SHORT
-            ).show();
+                    MyRequestsActivity.class
+            );
+
+            startActivity(intent);
 
         });
 
 
-        // Profile
+        // =================================
+        // PROFILE
+        // =================================
+
         navProfile.setOnClickListener(v -> {
 
             Toast.makeText(
@@ -227,4 +250,112 @@ public class BrowseRoomsActivity extends AppCompatActivity {
         });
 
     }
+
+
+    // =================================================
+    // OPEN ROOM DETAILS
+    // =================================================
+
+    private void openRoomDetails(
+            String roomId,
+            String roomType,
+            String location,
+            double rent,
+            boolean available) {
+
+        Intent intent = new Intent(
+                BrowseRoomsActivity.this,
+                RoomDetailsActivity.class
+        );
+
+        intent.putExtra("roomId", roomId);
+        intent.putExtra("roomType", roomType);
+        intent.putExtra("location", location);
+        intent.putExtra("rent", rent);
+        intent.putExtra("available", available);
+
+        startActivity(intent);
+
+    }
+
+
+    // =================================================
+    // SEARCH ROOMS
+    // =================================================
+
+    private void searchRooms(String searchText) {
+
+        searchText = searchText
+                .toLowerCase()
+                .trim();
+
+
+        // -----------------------------------------
+        // ROOM 1
+        // -----------------------------------------
+
+        boolean room1Matches =
+                "single room".contains(searchText)
+                        || "panjim".contains(searchText)
+                        || "goa".contains(searchText);
+
+
+        // -----------------------------------------
+        // ROOM 2
+        // -----------------------------------------
+
+        boolean room2Matches =
+                "shared room".contains(searchText)
+                        || "margao".contains(searchText)
+                        || "goa".contains(searchText);
+
+
+        // -----------------------------------------
+        // ROOM 3
+        // -----------------------------------------
+
+        boolean room3Matches =
+                "1 bhk".contains(searchText)
+                        || "vasco".contains(searchText)
+                        || "goa".contains(searchText);
+
+
+        // -----------------------------------------
+        // SHOW / HIDE COMPLETE CARDS
+        // -----------------------------------------
+
+        if (room1Matches) {
+
+            roomCard1.setVisibility(View.VISIBLE);
+
+        } else {
+
+            roomCard1.setVisibility(View.GONE);
+
+        }
+
+
+        if (room2Matches) {
+
+            roomCard2.setVisibility(View.VISIBLE);
+
+        } else {
+
+            roomCard2.setVisibility(View.GONE);
+
+        }
+
+
+        if (room3Matches) {
+
+            roomCard3.setVisibility(View.VISIBLE);
+
+        } else {
+
+            roomCard3.setVisibility(View.GONE);
+
+        }
+
+    }
+
 }

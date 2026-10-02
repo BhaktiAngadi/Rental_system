@@ -1,10 +1,14 @@
 package com.example.rental_system;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.rental_system.model.RentalRequest;
 
 public class RoomDetailsActivity extends AppCompatActivity {
 
@@ -33,13 +37,19 @@ public class RoomDetailsActivity extends AppCompatActivity {
         String roomId = getIntent().getStringExtra("roomId");
         String roomType = getIntent().getStringExtra("roomType");
         String location = getIntent().getStringExtra("location");
+
         double rent = getIntent().getDoubleExtra("rent", 0);
-        boolean available = getIntent().getBooleanExtra("available", false);
+
+        boolean available =
+                getIntent().getBooleanExtra("available", false);
 
         // Display room information
         tvRoomId.setText("Room ID: " + roomId);
+
         tvRoomType.setText(roomType);
+
         tvLocation.setText("📍 " + location);
+
         tvRent.setText("₹" + rent + " / month");
 
         if (available) {
@@ -48,15 +58,43 @@ public class RoomDetailsActivity extends AppCompatActivity {
             tvAvailability.setText("Not Available");
         }
 
+        // Send rental request
         btnRequestRent.setOnClickListener(v -> {
 
-            // Rental request will be implemented in Step 6
-            android.widget.Toast.makeText(
-                    RoomDetailsActivity.this,
-                    "Rental Request will be added in Step 6",
-                    android.widget.Toast.LENGTH_SHORT
-            ).show();
+            if (!available) {
 
+                Toast.makeText(
+                        RoomDetailsActivity.this,
+                        "This room is not available",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                return;
+            }
+
+            // Create RentalRequest object
+            RentalRequest request = new RentalRequest(
+                    "REQ001",
+                    roomId,
+                    "TENANT001",
+                    roomType,
+                    location,
+                    rent,
+                    "Pending"
+            );
+
+            // Open My Requests screen
+            Intent intent = new Intent(
+                    RoomDetailsActivity.this,
+                    MyRequestsActivity.class
+            );
+
+            intent.putExtra("roomId", request.getRoomId());
+            intent.putExtra("roomType", request.getRoomType());
+            intent.putExtra("location", request.getLocation());
+            intent.putExtra("rent", request.getRent());
+
+            startActivity(intent);
         });
     }
 }
