@@ -231,12 +231,15 @@
                 android:layout_marginBottom="12dp" />
 
             <LinearLayout
+                android:id="@+id/layoutRecentPayment"
                 android:layout_width="match_parent"
                 android:layout_height="105dp"
                 android:orientation="vertical"
                 android:padding="16dp"
                 android:background="#FFFFFF"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"

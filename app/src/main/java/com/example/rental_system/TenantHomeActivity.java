@@ -16,6 +16,7 @@ public class TenantHomeActivity extends AppCompatActivity {
     LinearLayout layoutBrowseRooms;
     LinearLayout layoutMyRequests;
     LinearLayout layoutCurrentRental;
+    LinearLayout layoutRecentPayment;
 
     TextView tvViewRooms;
 
@@ -47,6 +48,9 @@ public class TenantHomeActivity extends AppCompatActivity {
         navBrowse = findViewById(R.id.navBrowse);
         navRequests = findViewById(R.id.navRequests);
         navProfile = findViewById(R.id.navProfile);
+
+        // Recent Payment
+        layoutRecentPayment = findViewById(R.id.layoutRecentPayment);
 
 
         // --------------------------------
@@ -164,6 +168,20 @@ public class TenantHomeActivity extends AppCompatActivity {
                     "Profile will be added in Step 12",
                     Toast.LENGTH_SHORT
             ).show();
+        });
+
+
+        // ----------------------------
+        // Recent Payment
+        // ----------------------------
+        layoutRecentPayment.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    TenantHomeActivity.this,
+                    PaymentHistoryActivity.class
+            );
+
+            startActivity(intent);
         });
     }
 }
