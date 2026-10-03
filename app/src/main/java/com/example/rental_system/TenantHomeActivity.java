@@ -18,6 +18,7 @@ public class TenantHomeActivity extends AppCompatActivity {
     LinearLayout layoutCurrentRental;
     LinearLayout layoutRecentPayment;
     LinearLayout layoutComplaints;
+    LinearLayout layoutReviews;
 
     TextView tvViewRooms;
 
@@ -55,6 +56,9 @@ public class TenantHomeActivity extends AppCompatActivity {
 
         //complaints
         layoutComplaints = findViewById(R.id.layoutComplaints);
+
+        //Review
+        layoutReviews = findViewById(R.id.layoutReviews);
 
 
         // --------------------------------
@@ -196,6 +200,20 @@ public class TenantHomeActivity extends AppCompatActivity {
             Intent intent = new Intent(
                     TenantHomeActivity.this,
                     ComplaintActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+
+        // ----------------------------
+        // Review
+        // ----------------------------
+        layoutReviews.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    TenantHomeActivity.this,
+                    ReviewActivity.class
             );
 
             startActivity(intent);
