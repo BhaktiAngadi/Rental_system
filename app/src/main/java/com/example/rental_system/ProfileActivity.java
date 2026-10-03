@@ -2,94 +2,104 @@ package com.example.rental_system;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Button;
+import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ActiveRentalActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
+
+    Button btnLogout;
 
     LinearLayout navHome;
     LinearLayout navBrowse;
     LinearLayout navRequests;
     LinearLayout navProfile;
 
-    Button btnPayRent;
-
-
-    TextView tvNoRental;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_active_rental);
 
-        tvNoRental = findViewById(R.id.tvNoRental);
+        setContentView(R.layout.activity_profile);
+
+        btnLogout = findViewById(R.id.btnLogout);
 
         navHome = findViewById(R.id.navHome);
         navBrowse = findViewById(R.id.navBrowse);
         navRequests = findViewById(R.id.navRequests);
         navProfile = findViewById(R.id.navProfile);
-        btnPayRent = findViewById(R.id.btnPayRent);
 
 
-        // For now, there is no active rental.
-        // Later Firebase will provide the accepted rental.
-        tvNoRental.setText(
-                "You don't have an active rental yet.\n\n" +
-                        "Once your rental request is accepted, " +
-                        "your rented room will appear here."
-        );
+        // Logout
+
+        btnLogout.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    ProfileActivity.this,
+                    LoginActivity.class
+            );
+
+            // Remove previous screens
+            intent.setFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK |
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+            );
+
+            startActivity(intent);
+
+            finish();
+        });
 
 
         // Home
+
         navHome.setOnClickListener(v -> {
 
             Intent intent = new Intent(
-                    ActiveRentalActivity.this,
+                    ProfileActivity.this,
                     TenantHomeActivity.class
             );
 
             startActivity(intent);
+
             finish();
         });
 
 
         // Browse
+
         navBrowse.setOnClickListener(v -> {
 
             Intent intent = new Intent(
-                    ActiveRentalActivity.this,
+                    ProfileActivity.this,
                     BrowseRoomsActivity.class
             );
 
             startActivity(intent);
+
             finish();
         });
 
 
         // Requests
+
         navRequests.setOnClickListener(v -> {
 
             Intent intent = new Intent(
-                    ActiveRentalActivity.this,
+                    ProfileActivity.this,
                     MyRequestsActivity.class
             );
 
             startActivity(intent);
+
             finish();
         });
 
 
+        // Profile
+
         navProfile.setOnClickListener(v -> {
-
-            Intent intent = new Intent(
-                    ActiveRentalActivity.this,
-                    ProfileActivity.class
-            );
-
-            startActivity(intent);
-            finish();
+            // Already on profile
         });
     }
 }

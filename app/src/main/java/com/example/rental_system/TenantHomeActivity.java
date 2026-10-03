@@ -2,7 +2,6 @@ package com.example.rental_system;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,14 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TenantHomeActivity extends AppCompatActivity {
 
-    EditText etSearch;
-
     LinearLayout layoutBrowseRooms;
     LinearLayout layoutMyRequests;
-    LinearLayout layoutCurrentRental;
-    LinearLayout layoutRecentPayment;
-    LinearLayout layoutComplaints;
-    LinearLayout layoutReviews;
 
     TextView tvViewRooms;
 
@@ -26,24 +19,31 @@ public class TenantHomeActivity extends AppCompatActivity {
     LinearLayout navBrowse;
     LinearLayout navRequests;
     LinearLayout navProfile;
+    LinearLayout layoutCurrentRental;
+    LinearLayout layoutComplaints;
+    LinearLayout layoutReviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_home);
 
-        // Search
-        etSearch = findViewById(R.id.etSearch);
-
         // Quick Access
         layoutBrowseRooms = findViewById(R.id.layoutBrowseRooms);
         layoutMyRequests = findViewById(R.id.layoutMyRequests);
 
-        // Current Rental
-        layoutCurrentRental = findViewById(R.id.layoutCurrentRental);
-
         // View Available Rooms
         tvViewRooms = findViewById(R.id.tvViewRooms);
+
+        //current rental
+
+        layoutCurrentRental = findViewById(R.id.layoutCurrentRental);
+
+        //complaint
+        layoutComplaints = findViewById(R.id.layoutComplaints);
+
+        //review
+        layoutReviews = findViewById(R.id.layoutReviews);
 
         // Bottom Navigation
         navHome = findViewById(R.id.navHome);
@@ -51,20 +51,8 @@ public class TenantHomeActivity extends AppCompatActivity {
         navRequests = findViewById(R.id.navRequests);
         navProfile = findViewById(R.id.navProfile);
 
-        // Recent Payment
-        layoutRecentPayment = findViewById(R.id.layoutRecentPayment);
 
-        //complaints
-        layoutComplaints = findViewById(R.id.layoutComplaints);
-
-        //Review
-        layoutReviews = findViewById(R.id.layoutReviews);
-
-
-        // --------------------------------
         // Browse Rooms
-        // --------------------------------
-
         layoutBrowseRooms.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -76,10 +64,7 @@ public class TenantHomeActivity extends AppCompatActivity {
         });
 
 
-        // --------------------------------
         // My Requests
-        // --------------------------------
-
         layoutMyRequests.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -91,25 +76,7 @@ public class TenantHomeActivity extends AppCompatActivity {
         });
 
 
-        // --------------------------------
-        // Current Rental
-        // --------------------------------
-
-        layoutCurrentRental.setOnClickListener(v -> {
-
-            Intent intent = new Intent(
-                    TenantHomeActivity.this,
-                    ActiveRentalActivity.class
-            );
-
-            startActivity(intent);
-        });
-
-
-        // --------------------------------
         // View Available Rooms
-        // --------------------------------
-
         tvViewRooms.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -121,10 +88,7 @@ public class TenantHomeActivity extends AppCompatActivity {
         });
 
 
-        // --------------------------------
         // Bottom Navigation - Home
-        // --------------------------------
-
         navHome.setOnClickListener(v -> {
 
             Toast.makeText(
@@ -132,13 +96,11 @@ public class TenantHomeActivity extends AppCompatActivity {
                     "Home",
                     Toast.LENGTH_SHORT
             ).show();
+
         });
 
 
-        // --------------------------------
         // Bottom Navigation - Browse
-        // --------------------------------
-
         navBrowse.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -150,10 +112,7 @@ public class TenantHomeActivity extends AppCompatActivity {
         });
 
 
-        // --------------------------------
         // Bottom Navigation - Requests
-        // --------------------------------
-
         navRequests.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -165,36 +124,32 @@ public class TenantHomeActivity extends AppCompatActivity {
         });
 
 
-        // --------------------------------
         // Bottom Navigation - Profile
-        // --------------------------------
-
+        // Profile
         navProfile.setOnClickListener(v -> {
-
-            Toast.makeText(
-                    TenantHomeActivity.this,
-                    "Profile will be added in Step 12",
-                    Toast.LENGTH_SHORT
-            ).show();
-        });
-
-
-        // ----------------------------
-        // Recent Payment
-        // ----------------------------
-        layoutRecentPayment.setOnClickListener(v -> {
 
             Intent intent = new Intent(
                     TenantHomeActivity.this,
-                    PaymentHistoryActivity.class
+                    ProfileActivity.class
+            );
+
+            startActivity(intent);
+
+        });
+
+        //current rental
+        layoutCurrentRental.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    TenantHomeActivity.this,
+                    ActiveRentalActivity.class
             );
 
             startActivity(intent);
         });
 
-        // ----------------------------
-        // complaints
-        // ----------------------------
+
+        // Complaints
         layoutComplaints.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -205,10 +160,7 @@ public class TenantHomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
-        // ----------------------------
-        // Review
-        // ----------------------------
+        // Reviews
         layoutReviews.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -217,6 +169,7 @@ public class TenantHomeActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
+
         });
     }
 }

@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:background="#F7F8FA">
 
+
     <!-- SCROLLABLE MAIN CONTENT -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -20,14 +22,16 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Welcome Section -->
+
+            <!-- WELCOME SECTION -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="28dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -46,48 +50,26 @@
                         android:id="@+id/tvUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bhakti"
+                        android:text="Tenant"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:textColor="#222222" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:text="👤"
-                    android:textSize="25sp"
-                    android:background="#E9ECEF" />
+
+
+
+
 
             </LinearLayout>
 
 
-            <!-- Find Room -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Find your next room"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#222222"
-                android:layout_marginBottom="10dp" />
-
-            <EditText
-                android:id="@+id/etSearch"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="🔍  Search by location or room..."
-                android:textSize="14sp"
-                android:singleLine="true"
-                android:background="#FFFFFF"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:layout_marginBottom="24dp" />
 
 
-            <!-- Quick Access -->
+
+            <!-- QUICK ACCESS -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,6 +79,7 @@
                 android:textColor="#222222"
                 android:layout_marginBottom="12dp" />
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,7 +87,9 @@
                 android:weightSum="2"
                 android:layout_marginBottom="24dp">
 
-                <!-- Browse Rooms -->
+
+                <!-- BROWSE ROOMS -->
+
                 <LinearLayout
                     android:id="@+id/layoutBrowseRooms"
                     android:layout_width="0dp"
@@ -135,7 +120,8 @@
                 </LinearLayout>
 
 
-                <!-- My Requests -->
+                <!-- MY REQUESTS -->
+
                 <LinearLayout
                     android:id="@+id/layoutMyRequests"
                     android:layout_width="0dp"
@@ -168,7 +154,8 @@
             </LinearLayout>
 
 
-            <!-- Current Rental -->
+            <!-- CURRENT RENTAL -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,6 +164,7 @@
                 android:textStyle="bold"
                 android:textColor="#222222"
                 android:layout_marginBottom="12dp" />
+
 
             <LinearLayout
                 android:id="@+id/layoutCurrentRental"
@@ -220,7 +208,8 @@
             </LinearLayout>
 
 
-            <!-- Recent Payment -->
+            <!-- RECENT PAYMENT -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -230,16 +219,14 @@
                 android:textColor="#222222"
                 android:layout_marginBottom="12dp" />
 
+
             <LinearLayout
-                android:id="@+id/layoutRecentPayment"
                 android:layout_width="match_parent"
                 android:layout_height="105dp"
                 android:orientation="vertical"
                 android:padding="16dp"
                 android:background="#FFFFFF"
-                android:layout_marginBottom="20dp"
-                android:clickable="true"
-                android:focusable="true">
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -259,7 +246,8 @@
 
             </LinearLayout>
 
-            <!--complaints-->
+            <!-- Complaints -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -272,9 +260,8 @@
             <LinearLayout
                 android:id="@+id/layoutComplaints"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="105dp"
                 android:orientation="vertical"
-                android:gravity="center_vertical"
                 android:padding="16dp"
                 android:background="#FFFFFF"
                 android:clickable="true"
@@ -284,22 +271,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🛠️ Report a Problem"
+                    android:text="⚠️ Report a Complaint"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="#222222" />
+                    android:textColor="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Submit and track your complaints"
+                    android:text="Report an issue with your room or rental."
                     android:textSize="13sp"
                     android:textColor="#777777"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="6dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View / Submit Complaint →"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"
+                    android:layout_marginTop="8dp" />
 
             </LinearLayout>
 
-            <!--Review layoutHomeReview-->
+            <!-- Reviews -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -312,40 +309,50 @@
             <LinearLayout
                 android:id="@+id/layoutReviews"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="105dp"
                 android:orientation="vertical"
-                android:gravity="center_vertical"
                 android:padding="16dp"
                 android:background="#FFFFFF"
+                android:layout_marginBottom="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:layout_marginBottom="20dp">
+                android:focusable="true">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="⭐ Write a Review"
-                    android:textSize="16sp"
+                    android:text="⭐ My Reviews"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textColor="#222222" />
+                    android:textColor="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Share your room experience"
+                    android:text="Share your experience with a room."
                     android:textSize="13sp"
                     android:textColor="#777777"
                     android:layout_marginTop="5dp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Write a Review →"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#1976D2"
+                    android:layout_marginTop="8dp" />
+
             </LinearLayout>
+
+
 
         </LinearLayout>
 
     </ScrollView>
 
 
-
     <!-- FIXED BOTTOM NAVIGATION -->
+
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
@@ -355,7 +362,9 @@
         android:elevation="8dp"
         android:weightSum="4">
 
+
         <!-- HOME -->
+
         <LinearLayout
             android:id="@+id/navHome"
             android:layout_width="0dp"
@@ -384,6 +393,7 @@
 
 
         <!-- BROWSE -->
+
         <LinearLayout
             android:id="@+id/navBrowse"
             android:layout_width="0dp"
@@ -411,6 +421,7 @@
 
 
         <!-- REQUESTS -->
+
         <LinearLayout
             android:id="@+id/navRequests"
             android:layout_width="0dp"
@@ -438,6 +449,7 @@
 
 
         <!-- PROFILE -->
+
         <LinearLayout
             android:id="@+id/navProfile"
             android:layout_width="0dp"

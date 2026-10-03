@@ -107,11 +107,16 @@ public class MyRequestsActivity extends AppCompatActivity {
         });
 
 
-        // Profile
+        // PROFILE
         navProfile.setOnClickListener(v -> {
 
-            // Profile will be implemented in Step 12
+            Intent intent = new Intent(
+                    MyRequestsActivity.this,
+                    ProfileActivity.class
+            );
 
+            startActivity(intent);
+            finish();
         });
     }
 
