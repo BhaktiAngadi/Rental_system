@@ -33,7 +33,7 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
         btnRequestRent = findViewById(R.id.btnRequestRent);
 
-        // Get room information from BrowseRoomsActivity
+        // Get room information
         String roomId = getIntent().getStringExtra("roomId");
         String roomType = getIntent().getStringExtra("roomType");
         String location = getIntent().getStringExtra("location");
@@ -45,32 +45,24 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
         // Display room information
         tvRoomId.setText("Room ID: " + roomId);
-
         tvRoomType.setText(roomType);
-
         tvLocation.setText("📍 " + location);
-
         tvRent.setText("₹" + rent + " / month");
 
         if (available) {
+
             tvAvailability.setText("Available");
+            btnRequestRent.setEnabled(true);
+
         } else {
+
             tvAvailability.setText("Not Available");
+            btnRequestRent.setEnabled(false);
         }
 
-        // Send rental request
+
+        // Request to Rent
         btnRequestRent.setOnClickListener(v -> {
-
-            if (!available) {
-
-                Toast.makeText(
-                        RoomDetailsActivity.this,
-                        "This room is not available",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                return;
-            }
 
             // Create RentalRequest object
             RentalRequest request = new RentalRequest(
@@ -83,18 +75,52 @@ public class RoomDetailsActivity extends AppCompatActivity {
                     "Pending"
             );
 
-            // Open My Requests screen
+            Toast.makeText(
+                    RoomDetailsActivity.this,
+                    "Rental request submitted",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+
+            // Open My Requests
             Intent intent = new Intent(
                     RoomDetailsActivity.this,
                     MyRequestsActivity.class
             );
 
-            intent.putExtra("roomId", request.getRoomId());
-            intent.putExtra("roomType", request.getRoomType());
-            intent.putExtra("location", request.getLocation());
-            intent.putExtra("rent", request.getRent());
+            // Send complete request information
+            intent.putExtra(
+                    "requestId",
+                    request.getRequestId()
+            );
+
+            intent.putExtra(
+                    "roomId",
+                    request.getRoomId()
+            );
+
+            intent.putExtra(
+                    "roomType",
+                    request.getRoomType()
+            );
+
+            intent.putExtra(
+                    "location",
+                    request.getLocation()
+            );
+
+            intent.putExtra(
+                    "rent",
+                    request.getRent()
+            );
+
+            intent.putExtra(
+                    "status",
+                    request.getStatus()
+            );
 
             startActivity(intent);
+            finish();
         });
     }
 }
