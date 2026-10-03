@@ -17,6 +17,7 @@ public class TenantHomeActivity extends AppCompatActivity {
     LinearLayout layoutMyRequests;
     LinearLayout layoutCurrentRental;
     LinearLayout layoutRecentPayment;
+    LinearLayout layoutComplaints;
 
     TextView tvViewRooms;
 
@@ -51,6 +52,9 @@ public class TenantHomeActivity extends AppCompatActivity {
 
         // Recent Payment
         layoutRecentPayment = findViewById(R.id.layoutRecentPayment);
+
+        //complaints
+        layoutComplaints = findViewById(R.id.layoutComplaints);
 
 
         // --------------------------------
@@ -179,6 +183,19 @@ public class TenantHomeActivity extends AppCompatActivity {
             Intent intent = new Intent(
                     TenantHomeActivity.this,
                     PaymentHistoryActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+        // ----------------------------
+        // complaints
+        // ----------------------------
+        layoutComplaints.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    TenantHomeActivity.this,
+                    ComplaintActivity.class
             );
 
             startActivity(intent);
