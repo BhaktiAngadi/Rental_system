@@ -15,6 +15,7 @@ public class TenantHomeActivity extends AppCompatActivity {
 
     LinearLayout layoutBrowseRooms;
     LinearLayout layoutMyRequests;
+    LinearLayout layoutCurrentRental;
 
     TextView tvViewRooms;
 
@@ -35,6 +36,9 @@ public class TenantHomeActivity extends AppCompatActivity {
         layoutBrowseRooms = findViewById(R.id.layoutBrowseRooms);
         layoutMyRequests = findViewById(R.id.layoutMyRequests);
 
+        // Current Rental
+        layoutCurrentRental = findViewById(R.id.layoutCurrentRental);
+
         // View Available Rooms
         tvViewRooms = findViewById(R.id.tvViewRooms);
 
@@ -45,7 +49,10 @@ public class TenantHomeActivity extends AppCompatActivity {
         navProfile = findViewById(R.id.navProfile);
 
 
+        // --------------------------------
         // Browse Rooms
+        // --------------------------------
+
         layoutBrowseRooms.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -54,24 +61,43 @@ public class TenantHomeActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
-
         });
 
 
+        // --------------------------------
         // My Requests
+        // --------------------------------
+
         layoutMyRequests.setOnClickListener(v -> {
 
-            Toast.makeText(
+            Intent intent = new Intent(
                     TenantHomeActivity.this,
-                    "My Requests selected",
-                    Toast.LENGTH_SHORT
-            ).show();
+                    MyRequestsActivity.class
+            );
 
-            // We will connect this to MyRequestsActivity later
+            startActivity(intent);
         });
 
 
+        // --------------------------------
+        // Current Rental
+        // --------------------------------
+
+        layoutCurrentRental.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    TenantHomeActivity.this,
+                    ActiveRentalActivity.class
+            );
+
+            startActivity(intent);
+        });
+
+
+        // --------------------------------
         // View Available Rooms
+        // --------------------------------
+
         tvViewRooms.setOnClickListener(v -> {
 
             Intent intent = new Intent(
@@ -80,11 +106,13 @@ public class TenantHomeActivity extends AppCompatActivity {
             );
 
             startActivity(intent);
-
         });
 
 
+        // --------------------------------
         // Bottom Navigation - Home
+        // --------------------------------
+
         navHome.setOnClickListener(v -> {
 
             Toast.makeText(
@@ -95,42 +123,47 @@ public class TenantHomeActivity extends AppCompatActivity {
         });
 
 
+        // --------------------------------
         // Bottom Navigation - Browse
+        // --------------------------------
+
         navBrowse.setOnClickListener(v -> {
 
-            Toast.makeText(
+            Intent intent = new Intent(
                     TenantHomeActivity.this,
-                    "Browse",
-                    Toast.LENGTH_SHORT
-            ).show();
+                    BrowseRoomsActivity.class
+            );
 
-            // We will connect Browse screen later
+            startActivity(intent);
         });
 
 
+        // --------------------------------
         // Bottom Navigation - Requests
+        // --------------------------------
+
         navRequests.setOnClickListener(v -> {
 
-            Toast.makeText(
+            Intent intent = new Intent(
                     TenantHomeActivity.this,
-                    "Requests",
-                    Toast.LENGTH_SHORT
-            ).show();
+                    MyRequestsActivity.class
+            );
 
-            // We will connect My Requests screen later
+            startActivity(intent);
         });
 
 
+        // --------------------------------
         // Bottom Navigation - Profile
+        // --------------------------------
+
         navProfile.setOnClickListener(v -> {
 
             Toast.makeText(
                     TenantHomeActivity.this,
-                    "Profile",
+                    "Profile will be added in Step 12",
                     Toast.LENGTH_SHORT
             ).show();
-
-            // We will create Profile screen later
         });
     }
 }
